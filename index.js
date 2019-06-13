@@ -11,3 +11,15 @@ module.exports.readByCoordinates = function(lat, lon) {
             });
     });
 };
+
+module.exports.globalCoordinates = function(lat, lon, units) {
+    return new Promise((resolve, reject) => {
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e25166729abfc961178e356c1f46fe23&units=${units}`)
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err);
+            });  
+    });
+};
