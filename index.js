@@ -14,7 +14,7 @@ module.exports.readByCoordinates = function(lat, lon) {
 };
 
 // Global weather requests - current weather - from Open Weather 
-module.exports.globalCoordinatesCurrent = function(lat, lon, apiKey) {
+module.exports.globalCoordinatesCurrent = function(lat, lon, apiKey, units) {
     return new Promise((resolve, reject) => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`)
             .then(res => {
