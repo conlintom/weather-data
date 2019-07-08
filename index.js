@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+// US based weather only - from US Weather Service
 module.exports.readByCoordinates = function(lat, lon) {
     return new Promise((resolve, reject) => {
         axios.get(`https://api.weather.gov/points/${lat},${lon}/forecast`)
@@ -12,14 +13,30 @@ module.exports.readByCoordinates = function(lat, lon) {
     });
 };
 
-module.exports.globalCoordinates = function(lat, lon, units) {
+// Global weather requests - current weather - from Open Weather 
+module.exports.globalCoordinatesCurrent = function(lat, lon, apiKey) {
     return new Promise((resolve, reject) => {
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e25166729abfc961178e356c1f46fe23&units=${units}`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`)
             .then(res => {
                 resolve(res)
             })
             .catch(err => {
                 reject(err);
-            });  
+            });
+            
+    });
+};
+
+// Global weather requests - 5 day/3 Hour Forecast
+module.exports.globalCoordinatesWeekly = function(lat, lon, apiKey, units) {
+    return new Promise((resolve, reject) => {
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`)    
+            .then(res => {
+                resolve(res.data)
+            })
+            .catch(err => {
+                reject(err);
+            });
+            
     });
 };
