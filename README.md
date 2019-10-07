@@ -8,4 +8,11 @@ The Requests avaliable are:
 3. National Weather Service API | Current Weather (United States Lat/Lon Only)
 
 ## Usage
-/ToDo
+`npm install weather-data`
+
+`const weather = require('weather-data')`
+
+Refer to request time:
+`weather.globalCoordinatesWeekly(latitude, longitude, apiKey, units)`
+`weather.globalCoordinatesCurrent(latitude, longitude, apiKey, units)`
+`weather.readByCoordinates = function(latitude, longitude)`
