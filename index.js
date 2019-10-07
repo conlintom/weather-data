@@ -21,7 +21,11 @@ module.exports.globalCoordinatesCurrent = function(lat, lon, apiKey, units) {
                 resolve(res)
             })
             .catch(err => {
-                reject(new Error(err));
+                const objErr = err;
+                const cod = objErr.response.data.cod;
+                const message = objErr.response.data.message;
+                const res = `The Request Failed: ${cod} ${message}`
+                reject(res);
             });
             
     });
@@ -35,7 +39,11 @@ module.exports.globalCoordinatesWeekly = function(lat, lon, apiKey, units) {
                 resolve(res.data)
             })
             .catch(err => {
-                reject(new Error(err));
+                const objErr = err;
+                const cod = objErr.response.data.cod;
+                const message = objErr.response.data.message;
+                const res = `The Request Failed: ${cod} ${message}`
+                reject(res);
             });
             
     });
