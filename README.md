@@ -6,3 +6,6 @@ The Requests avaliable are:
 1. Open Weather API | Current Weather
 2. Open Weather API | 5 Day Forecast - 3 Hour Increments
 3. National Weather Service API | Current Weather (United States Lat/Lon Only)
+
+## Tests
+`npm test`
